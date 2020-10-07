@@ -1,15 +1,43 @@
+/*@font-face {
+  font-family: 'Sneak-Regular';
+  src: url('webfont.eot');  IE9 Compat Modes 
+  src: url('webfont.eot?#iefix') format('embedded-opentype'),IE6-IE8 
+       url('webfont.woff2') format('woff2'),  Super Modern Browsers 
+       url('webfont.woff') format('woff'),  Pretty Modern Browsers 
+       url('webfont.ttf')  format('truetype'),  Safari, Android, iOS 
+       url('webfont.svg#svgFontName') format('svg');  Legacy iOS 
+}*/
+@font-face {
+	font-family:'Sneak-Regular';
+	src:url('assets/fonts/Sneak-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'self_modernregular';
+    src: url('assts/fonts/webfontkit_selfModern/self-modern-webfont.woff2') format('woff2'),
+         url('assts/fonts/webfontkit_selfModern/self-modern-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 body {
 	background-color:#EAD9BF;
+	overflow:hidden;
 }
 
 #gridContainer {
 	display:grid;
 	grid-template-columns: repeat(12, 1fr) ;
 	grid-column-gap:1vw;
-	border-style:solid;
 	height:97vh;
+	padding:1%;
 }
 
 .project_description {
+	font-family:'Sneak-Regular';
 	grid-column :10/13;
+}
+
+.serifFont {
+	font-family:'self_modernregular';
 }
