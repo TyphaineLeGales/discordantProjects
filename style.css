@@ -1,0 +1,15 @@
+body {
+	background-color:#EAD9BF;
+}
+
+#gridContainer {
+	display:grid;
+	grid-template-columns: repeat(12, 1fr) ;
+	grid-column-gap:1vw;
+	border-style:solid;
+	height:97vh;
+}
+
+.project_description {
+	grid-column :10/13;
+}
