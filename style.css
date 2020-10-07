@@ -32,6 +32,14 @@ a {
 	color:black;
 }
 
+header {
+	font-family:'self_modernregular';
+	grid-column: 0/span 4;
+	grid-row:1/span 1;
+	align-self: end;
+	font-size:5em;
+}
+
 #gridContainer {
 	display:grid;
 	grid-template-columns: repeat(12, 1fr) ;
@@ -51,9 +59,17 @@ a {
 	font-family:'self_modernregular';
 }
 
+.bottomItem {
+	align-self:end;
+	font-family:'Sneak-Regular';
+}
 #contact {
 	grid-column:10/11;
 	grid-row:2/span 1;
-	align-self:end;
-	font-family:'Sneak-Regular';
+}
+
+#scrollDown {
+	grid-column:1/span 2;
+	grid-row:2/span 1;
+
 }
