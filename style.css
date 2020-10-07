@@ -25,10 +25,19 @@ body {
 	overflow:hidden;
 }
 
+a {
+	font-family:'self_modernregular';
+	/*font-weight:bold;*/
+	text-decoration:underline;
+	color:black;
+}
+
 #gridContainer {
 	display:grid;
 	grid-template-columns: repeat(12, 1fr) ;
 	grid-column-gap:1vw;
+	grid-template-rows: 1fr 1fr;
+	grid-column-gap:1vh;
 	height:97vh;
 	padding:1%;
 }
@@ -40,4 +49,11 @@ body {
 
 .serifFont {
 	font-family:'self_modernregular';
+}
+
+#contact {
+	grid-column:10/11;
+	grid-row:2/span 1;
+	align-self:end;
+	font-family:'Sneak-Regular';
 }
