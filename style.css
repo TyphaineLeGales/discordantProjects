@@ -34,7 +34,8 @@ a {
 }
 
 p {
-	font-size:10pt;
+	font-size:calc(10px + 0.25vw)
+;
 	line-height: 14pt;
 	z-index:20;
 }
@@ -126,28 +127,24 @@ header {
 	/* For tablets */
 
 	header {
-  	text-align:left;
-  	grid-column: 1/span 5;
-  	grid-row:1/span 2;
+  	text-align:center;
+  	grid-column: 1/span 12;
+  	grid-row:1/span 1;
   }
 
 	.project_description {
-		grid-column :6/13;
-		grid-row:1/span 1;
-	}
-
-	#scrollDown {
-		grid-column:1/span 4;
+		grid-column :1/13;
 		grid-row:2/span 1;
 	}
 
 	#contact {
-		grid-column:6/span 1;
+		grid-column:11/span 2;
 		grid-row:2/span 1;
+		text-align:right;
 	}
 
 	#scrollDown {
-		grid-column:1/span 4;
+		grid-column:1/span 6;
 		grid-row:2/span 1;
 	}
 
