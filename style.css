@@ -32,12 +32,15 @@ a {
 	color:black;
 }
 
+p {
+	font-size:12pt;
+	line-height: 16pt;
+}
+
 header {
 	font-family:'self_modernregular';
-	grid-column: 1/span 5;
 	grid-row:1/span 1;
 	align-self: end;
-	text-align:center;
 	font-size:5em;
 }
 
@@ -69,6 +72,11 @@ header {
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
+  header {
+  	text-align:center;
+  	grid-column: 1/span 12;
+  }
+
  	.project_description {
 		grid-column :1/13;
 		grid-row:2/span 1;
@@ -86,10 +94,18 @@ header {
 	}
 
 
+
+
 }
 
 @media only screen and (min-width: 600px) {
 	/* For tablets */
+
+	header {
+  	text-align:left;
+  	grid-column: 1/span 5;
+  }
+
 	.project_description {
 		grid-column :6/13;
 		grid-row:1/span 1;
@@ -101,7 +117,7 @@ header {
 	}
 
 	#contact {
-		grid-column:10/11;
+		grid-column:6/span 1;
 		grid-row:2/span 1;
 	}
 
@@ -109,10 +125,16 @@ header {
 		grid-column:1/span 4;
 		grid-row:2/span 1;
 	}
+
 }
 
 @media only screen and (min-width: 768px) {
   /* For desktop: */
+	header {
+  	text-align:left;
+  	grid-column: 1/span 5;
+  }
+  
   .project_description {
 		grid-column :10/13;
 		grid-row:1/span 1;
