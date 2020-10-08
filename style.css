@@ -26,6 +26,7 @@ body {
 	overflow:hidden;
 }
 
+
 a {
 	font-family:'self_modernregular';
 	text-decoration:underline;
@@ -35,12 +36,28 @@ a {
 p {
 	font-size:10pt;
 	line-height: 14pt;
+	z-index:20;
 }
 
 header {
 	font-family:'self_modernregular';
 	align-self: center;
 	font-size:5em;
+}
+
+#scrollContainer {
+	height:95vh;
+	width:100vw;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:10;
+	overflow-y: auto;
+	scrollbar-width: none;
+}
+::-webkit-scrollbar {
+	width: 0px; 
+	background: transparent;
 }
 
 #gridContainer {
@@ -69,6 +86,10 @@ header {
 .bottomItem {
 	align-self:end;
 	font-family:'Sneak-Regular';
+}
+
+.placeholder {
+	font-size:10em;
 }
 
 
