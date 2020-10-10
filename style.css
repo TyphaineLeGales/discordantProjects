@@ -42,10 +42,21 @@ p {
 
 header {
 	font-family:'self_modernregular';
-	align-self: center;
 	font-size:5em;
 }
 
+img {
+	width:80%;
+}
+
+
+.leftTop {
+	align-self: start;
+}
+
+#title {
+	align-self:center;
+}
 .invisible {
 	display:none !important; 
 }
@@ -105,7 +116,7 @@ header {
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
-  header {
+  .leftTop {
   	text-align:center;
   	grid-column: 1/span 12;
   	grid-row:1/span 1;
@@ -131,7 +142,7 @@ header {
 @media only screen and (min-width: 600px) {
 	/* For tablets */
 
-	header {
+	.leftTop {
   	text-align:center;
   	grid-column: 1/span 12;
   	grid-row:1/span 1;
@@ -157,7 +168,7 @@ header {
 
 @media only screen and (min-width: 768px) {
   /* For desktop: */
-	header {
+	.leftTop {
   	text-align:left;
   	grid-column: 1/span 5;
   	grid-row:1/span 2;
