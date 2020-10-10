@@ -1,21 +1,26 @@
 const scrollContainer = document.getElementById('scrollContainer');
-const scrollMaxY = scrollContainer.scrollHeight;
-const numberOfSections = 6;
+// const scrollMaxY = scrollContainer.scrollHeight;
+// const numberOfSections = 6;
 const sections = document.querySelectorAll('div.section');
-let currSection;
+const scrollThreshold = 200;
+let currSectionIndex = 0 ;
+let prevScrollTop, curScrollTop;
 
-//divide total scrolling into 6 section
-// console.log the current section
 
 const navProgress = () => {
-	// console.log('top: '  + (scrollContainer.pageYOffset || scrollContainer.scrollTop));
-	// console.log(scrollContainer.scrollHeight);
-	// let thresholds = createSectionsThreshold(numberOfSections, scrollMaxY );
-	// console.log(scrollContainer.scrollTop % (scrollMaxY/numberOfSections));
-	if(scrollContainer.scrollTop > 300) {
-		dispCurrSection(getCurrSection(1));
-	}
+	currScrollTop = scrollContainer.scrollTop;
 
+	// console.log('top: '  + (scrollContainer.pageYOffset || scrollContainer.scrollTop));
+
+	if(currScrollTop % scrollThreshold < 10) {
+		if(detectScrollDirection(prevScrollTop, currScrollTop)) {
+			currSectionIndex += 1;
+		} else {
+			currSectionIndex -= 1;
+		}
+		dispCurrSection(getCurrSection(currSectionIndex));
+	}
+	prevScrollTop = currScrollTop;
 }
 
 // const createSectionsThreshold = (numOfSections, maxScroll) => {
@@ -29,4 +34,8 @@ const getCurrSection = (index) => {
 const dispCurrSection = (section) => {
 	sections.forEach(section => section.classList.add('invisible')); //exclude current section and add 'invisible'
 	section.classList.remove('invisible');
+}
+
+const detectScrollDirection = (prev, curr) => {
+	return userIsScrollingDown = curr > prev ? true : false
 }

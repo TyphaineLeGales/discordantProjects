@@ -38,6 +38,7 @@ p {
 ;
 	line-height: 14pt;
 	z-index:20;
+	margin-top:0;
 }
 
 header {
@@ -46,7 +47,7 @@ header {
 }
 
 img {
-	width:80%;
+	width:70%;
 }
 
 
