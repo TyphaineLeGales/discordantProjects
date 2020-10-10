@@ -13,12 +13,13 @@ const navProgress = () => {
 	// console.log('top: '  + (scrollContainer.pageYOffset || scrollContainer.scrollTop));
 
 	if(currScrollTop % scrollThreshold < 10) {
-		if(detectScrollDirection(prevScrollTop, currScrollTop)) {
+		if(detectScrollDirection(prevScrollTop, currScrollTop) && currSectionIndex != sections.length) {
 			currSectionIndex += 1;
-		} else {
+		} else if(!detectScrollDirection(prevScrollTop, currScrollTop) && currSectionIndex != 0){
 			currSectionIndex -= 1;
 		}
-		dispCurrSection(getCurrSection(currSectionIndex));
+		// dispCurrSection(getCurrSection(currSectionIndex));
+		console.log(currSectionIndex);
 	}
 	prevScrollTop = currScrollTop;
 }
