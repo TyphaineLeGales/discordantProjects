@@ -1,35 +1,13 @@
 const scrollContainer = document.getElementById('scrollContainer');
-// const scrollMaxY = scrollContainer.scrollHeight;
-// const numberOfSections = 6;
 const sections = document.querySelectorAll('div.section');
-const scrollThreshold = 200;
+const scrollThreshold = 300;
 let currSectionIndex = 0 ;
 let prevScrollTop, curScrollTop;
 
 
-const navProgress = () => {
-	currScrollTop = scrollContainer.scrollTop;
-
-	// console.log('top: '  + (scrollContainer.pageYOffset || scrollContainer.scrollTop));
-
-	if(currScrollTop % scrollThreshold < 10) {
-		if(detectScrollDirection(prevScrollTop, currScrollTop) && currSectionIndex != sections.length) {
-			currSectionIndex += 1;
-		} else if(!detectScrollDirection(prevScrollTop, currScrollTop) && currSectionIndex != 0){
-			currSectionIndex -= 1;
-		}
-		// dispCurrSection(getCurrSection(currSectionIndex));
-		console.log(currSectionIndex);
-	}
-	prevScrollTop = currScrollTop;
-}
-
-// const createSectionsThreshold = (numOfSections, maxScroll) => {
-
-// }
-
-const getCurrSection = (index) => {
-	return sections[index];
+const navSections = () => {
+	currSectionIndex = Math.trunc(mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, 7));
+	dispCurrSection(sections[currSectionIndex]);
 }
 
 const dispCurrSection = (section) => {
@@ -37,6 +15,9 @@ const dispCurrSection = (section) => {
 	section.classList.remove('invisible');
 }
 
-const detectScrollDirection = (prev, curr) => {
-	return userIsScrollingDown = curr > prev ? true : false
+const mapRange = (value, a, b, c, d) => {
+  value = (value - a) / (b - a);
+  return c + value*(d-c);
 }
+
+//within section scroll through images and display current legends
