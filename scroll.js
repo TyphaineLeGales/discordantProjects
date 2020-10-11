@@ -1,14 +1,22 @@
 const scrollContainer = document.getElementById('scrollContainer');
 const sections = document.querySelectorAll('div.section');
-const scrollThreshold = 300;
-let currSectionIndex = 0 ;
-let prevScrollTop, curScrollTop;
-
+let prevIndex, currSectionIndex;
 
 const navSections = () => {
+
 	currSectionIndex = Math.trunc(mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, 7));
-	dispCurrSection(sections[currSectionIndex]);
+	if(currSectionIndex != prevIndex) {
+		dispCurrSection(sections[currSectionIndex]);
+		navImagesWithinSection(sections[currSectionIndex]);
+	}
+	prevIndex = currSectionIndex;
+
 }
+
+const navImagesWithinSection = (section) => {
+	let images = section.querySelectorAll('img');
+	console.log(images);
+} 
 
 const dispCurrSection = (section) => {
 	sections.forEach(section => section.classList.add('invisible')); //exclude current section and add 'invisible'
