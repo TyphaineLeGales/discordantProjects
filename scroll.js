@@ -1,26 +1,45 @@
 const scrollContainer = document.getElementById('scrollContainer');
 const sections = document.querySelectorAll('div.section');
-let prevIndex, currSectionIndex;
+const numberOfSections = sections.length;
+let prevSectionIndex, currSectionIndex;
+let prevImageIndex, currImageIndex;
+
+//add images and not just scroll through them 
 
 const navSections = () => {
-
-	currSectionIndex = Math.trunc(mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, 7));
-	if(currSectionIndex != prevIndex) {
+	let mappedScroll = mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, numberOfSections);
+	currSectionIndex = Math.trunc(mappedScroll);
+	if(currSectionIndex != prevSectionIndex) {
 		dispCurrSection(sections[currSectionIndex]);
-		navImagesWithinSection(sections[currSectionIndex]);
 	}
-	prevIndex = currSectionIndex;
+	navImagesWithinSection(sections[currSectionIndex], mappedScroll);
+	prevSectionIndex = currSectionIndex;
 
 }
 
-const navImagesWithinSection = (section) => {
+const navImagesWithinSection = (section, scroll) => {
 	let images = section.querySelectorAll('img');
-	console.log(images);
+	currImageIndex = Math.trunc(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
+	if(currImageIndex > prevImageIndex) {
+		addImage(images[currImageIndex]);
+	}  else if (currImageIndex < prevImageIndex) {
+		removeImage(images[currImageIndex]);
+	}
+
+	prevImageIndex = currImageIndex;
 } 
 
 const dispCurrSection = (section) => {
 	sections.forEach(section => section.classList.add('invisible')); //exclude current section and add 'invisible'
 	section.classList.remove('invisible');
+}
+
+const addImage = (image) => {
+	image.classList.remove('invisible');
+}
+
+const removeImage = (image) => {
+	image.classList.add('invisible');
 }
 
 const mapRange = (value, a, b, c, d) => {

@@ -48,11 +48,15 @@ header {
 
 img {
 	width:70%;
+	position:absolute;
+	top:0;
+	left:0;
 }
 
 
 .leftTop {
 	align-self: start;
+	position:relative;
 }
 
 #title {
