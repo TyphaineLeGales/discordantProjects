@@ -24,6 +24,7 @@ const navImagesWithinSection = (section, scroll) => {
 	let captions = section.querySelectorAll('p.caption');
 
 	currImageIndex = Math.trunc(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
+	console.log(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
 	if(currImageIndex > prevImageIndex) {
 		addElement(images[currImageIndex]);
 		// console.log(captions[currImageIndex].innerHTML);

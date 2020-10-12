@@ -111,8 +111,8 @@ img {
 }
 
 .placeholder {
-	font-size:10em;
-	color:transparent;
+	font-size:11em;
+	/*color:transparent;*/
 	opacity:0.1;
 }
 
