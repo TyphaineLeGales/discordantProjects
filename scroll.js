@@ -21,12 +21,16 @@ const navSections = () => {
 
 const navImagesWithinSection = (section, scroll) => {
 	let images = section.querySelectorAll('img');
+	let captions = section.querySelectorAll('p.caption');
 
 	currImageIndex = Math.trunc(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
 	if(currImageIndex > prevImageIndex) {
-		addImage(images[currImageIndex]);
+		addElement(images[currImageIndex]);
+		// console.log(captions[currImageIndex].innerHTML);
+		// addElement(captions[currImageIndex]);
 	}  else if (currImageIndex < prevImageIndex && prevSectionIndex >= currSectionIndex) {
-		removeImage(images[prevImageIndex]);
+		removeElement(images[prevImageIndex]);
+		// removeElement(captions[prevImageIndex]);
 	}
 
 
@@ -38,12 +42,12 @@ const dispCurrSection = (section) => {
 	section.classList.remove('invisible');
 }
 
-const addImage = (image) => {
-	image.classList.remove('invisible');
+const addElement = (element) => {
+	element.classList.remove('invisible');
 }
 
-const removeImage = (image) => {
-	image.classList.add('invisible');
+const removeElement = (element) => {
+	element.classList.add('invisible');
 }
 
 const detectScrollDirection = (prev, curr) => {
