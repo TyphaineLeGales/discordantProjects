@@ -4,7 +4,7 @@ const numberOfSections = sections.length;
 let prevSectionIndex, currSectionIndex;
 let prevImageIndex = 0, currImageIndex=0;
 
-//add images and not just scroll through them
+
 // corresponding legends for images 
 //class system for images detect if its horizontal or vertical ?
 
@@ -25,10 +25,8 @@ const navImagesWithinSection = (section, scroll) => {
 	currImageIndex = Math.trunc(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
 	if(currImageIndex > prevImageIndex) {
 		addImage(images[currImageIndex]);
-	}  else if (currImageIndex < prevImageIndex) {
-		if(prevSectionIndex >= currSectionIndex) {
-			removeImage(images[prevImageIndex]);
-		}
+	}  else if (currImageIndex < prevImageIndex && prevSectionIndex >= currSectionIndex) {
+		removeImage(images[prevImageIndex]);
 	}
 
 
