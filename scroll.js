@@ -1,11 +1,9 @@
 const scrollContainer = document.getElementById('scrollContainer');
 const sections = document.querySelectorAll('div.section');
 const numberOfSections = sections.length;
-let prevSectionIndex, currSectionIndex;
+let prevSectionIndex = 0;
+let currSectionIndex =0;
 let prevImageIndex = 0, currImageIndex=0;
-
-
-// corresponding legends for images 
 
 const navSections = () => {
 	let mappedScroll = mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, numberOfSections);
@@ -32,8 +30,6 @@ const navImagesWithinSection = (section, scroll) => {
 	}
 
 	dispImgCaptions(captions, currImageIndex);
-
-
 	prevImageIndex = currImageIndex;
 } 
 
