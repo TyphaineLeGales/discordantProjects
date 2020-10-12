@@ -2,9 +2,11 @@ const scrollContainer = document.getElementById('scrollContainer');
 const sections = document.querySelectorAll('div.section');
 const numberOfSections = sections.length;
 let prevSectionIndex, currSectionIndex;
-let prevImageIndex, currImageIndex;
+let prevImageIndex = 0, currImageIndex=0;
 
-//add images and not just scroll through them 
+//add images and not just scroll through them
+// corresponding legends for images 
+//class system for images detect if its horizontal or vertical ?
 
 const navSections = () => {
 	let mappedScroll = mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, numberOfSections);
@@ -19,12 +21,16 @@ const navSections = () => {
 
 const navImagesWithinSection = (section, scroll) => {
 	let images = section.querySelectorAll('img');
+
 	currImageIndex = Math.trunc(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
 	if(currImageIndex > prevImageIndex) {
 		addImage(images[currImageIndex]);
 	}  else if (currImageIndex < prevImageIndex) {
-		removeImage(images[currImageIndex]);
+		if(prevSectionIndex >= currSectionIndex) {
+			removeImage(images[prevImageIndex]);
+		}
 	}
+
 
 	prevImageIndex = currImageIndex;
 } 
@@ -42,9 +48,11 @@ const removeImage = (image) => {
 	image.classList.add('invisible');
 }
 
+const detectScrollDirection = (prev, curr) => {
+	return userIsScrollingDown = curr > prev ? true : false
+}
+
 const mapRange = (value, a, b, c, d) => {
   value = (value - a) / (b - a);
   return c + value*(d-c);
 }
-
-//within section scroll through images and display current legends
