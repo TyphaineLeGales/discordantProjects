@@ -6,7 +6,6 @@ let prevImageIndex = 0, currImageIndex=0;
 
 
 // corresponding legends for images 
-//class system for images detect if its horizontal or vertical ?
 
 const navSections = () => {
 	let mappedScroll = mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, numberOfSections);
@@ -24,15 +23,15 @@ const navImagesWithinSection = (section, scroll) => {
 	let captions = section.querySelectorAll('p.caption');
 
 	currImageIndex = Math.trunc(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
-	console.log(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
+
+
 	if(currImageIndex > prevImageIndex) {
 		addElement(images[currImageIndex]);
-		// console.log(captions[currImageIndex].innerHTML);
-		// addElement(captions[currImageIndex]);
 	}  else if (currImageIndex < prevImageIndex && prevSectionIndex >= currSectionIndex) {
 		removeElement(images[prevImageIndex]);
-		// removeElement(captions[prevImageIndex]);
 	}
+
+	dispImgCaptions(captions, currImageIndex);
 
 
 	prevImageIndex = currImageIndex;
@@ -41,6 +40,13 @@ const navImagesWithinSection = (section, scroll) => {
 const dispCurrSection = (section) => {
 	sections.forEach(section => section.classList.add('invisible')); //exclude current section and add 'invisible'
 	section.classList.remove('invisible');
+}
+
+const dispImgCaptions = (captions, index) => {
+	if(captions[index]) {
+		captions.forEach(caption => caption.classList.add('invisible'));
+		captions[currImageIndex].classList.remove('invisible');
+	}
 }
 
 const addElement = (element) => {
