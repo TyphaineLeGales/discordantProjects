@@ -2,7 +2,7 @@ const scrollContainer = document.getElementById('scrollContainer');
 const sections = document.querySelectorAll('div.section');
 const numberOfSections = sections.length;
 let prevSectionIndex = 0;
-let currSectionIndex =0;
+let currSectionIndex = 0;
 let prevImageIndex = 0, currImageIndex=0;
 
 const navSections = () => {
