@@ -3,68 +3,76 @@ const sections = document.querySelectorAll('div.section');
 const descriptions = document.querySelectorAll('div.project_description');
 const captions = document.querySelectorAll('p.caption');
 const numberOfSections = sections.length;
-let prevSectionIndex = 0;
-let currSectionIndex = 0;
+let prevSectionIndex = 0, currSectionIndex = 0;
 let prevImageIndex = 0, currImageIndex=0;
+let prevScroll=0, currScroll = 0;
 
-// add section on top of each other
-// project description goes invisible
+// window.addEventListener( 'resize', onWindowResize, false );
 
-const navSections = () => {
-	let mappedScroll = mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, numberOfSections);
-	currSectionIndex = Math.trunc(mappedScroll);
+
+function navSections ()  {
+	currScroll = mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, numberOfSections);
+	let direction;
+	currSectionIndex = Math.trunc(currScroll);
+
 	if(currSectionIndex != prevSectionIndex) {
-
 		dispCurrDescription(sections[currSectionIndex]);
 	}
-	navImagesWithinSection(sections[currSectionIndex], mappedScroll);
+	navImagesWithinSection(sections[currSectionIndex], currScroll, direction);
 	prevSectionIndex = currSectionIndex;
+	prevScroll = currScroll
 
 }
 
-const navImagesWithinSection = (section, scroll) => {
+function navImagesWithinSection(section, scroll, dir) {
 	let images = section.querySelectorAll('img');
 	let captionsWithinSection = section.querySelectorAll('p.caption');
 
 	currImageIndex = Math.trunc(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
 
-	if(currImageIndex >= prevImageIndex) {
-		addElement(images[currImageIndex]);
-	}  else if (currImageIndex < prevImageIndex && prevSectionIndex >= currSectionIndex) {
-		removeElement(images[prevImageIndex]);
+	if(currImageIndex >=prevImageIndex && currScroll > prevScroll) {
+		if(images[currImageIndex]) {
+			addElement(images[currImageIndex]);
+		}
+	} else if (currImageIndex != prevImageIndex && currScroll < prevScroll ) {
+		if(images[currImageIndex]) {
+			removeElement(images[prevImageIndex]);
+			console.log('removing');
+		}
 	}
+
 
 	dispImgCaptions(captionsWithinSection, currImageIndex);
 	prevImageIndex = currImageIndex;
 } 
 
 
-const dispCurrDescription = (section) => {
+function dispCurrDescription (section) {
 	let description = section.querySelector('div.project_description');
 	descriptions.forEach(section => section.classList.add('invisible')); //exclude current section and add 'invisible'
 	description.classList.remove('invisible');
 }
 
-const dispImgCaptions = (captionsWithinSection, index) => {
+function dispImgCaptions (captionsWithinSection, index) {
 	if(captionsWithinSection[index]) {
 		captions.forEach(caption => caption.classList.add('notDisplayed'));
 		captionsWithinSection[currImageIndex].classList.remove('notDisplayed');
 	}
 }
 
-const addElement = (element) => {
+function addElement (element){
 	element.classList.remove('invisible');
 }
 
-const removeElement = (element) => {
+function removeElement (element){
 	element.classList.add('invisible');
 }
 
-const detectScrollDirection = (prev, curr) => {
-	return userIsScrollingDown = curr > prev ? true : false
+function detectScrollDirection (prev, curr){
+	return curr > prev ? true : false;
 }
 
-const mapRange = (value, a, b, c, d) => {
+function mapRange (value, a, b, c, d){
   value = (value - a) / (b - a);
   return c + value*(d-c);
 }
