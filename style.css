@@ -15,6 +15,7 @@
 body {
 	background-color:#EAD9BF;
 	overflow:hidden;
+	position:relative;
 }
 
 
@@ -53,7 +54,7 @@ img {
 	align-self:center;
 }
 .invisible {
-	display:none !important; 
+	opacity:0 !important; 
 }
 
 #scrollContainer {
@@ -72,6 +73,9 @@ img {
 }
 
 .gridContainer {
+	position:absolute;
+	top:0;
+	left:0;
 	display:grid;
 	grid-template-columns: repeat(12, 1fr) ;
 	grid-column-gap:1vw;
