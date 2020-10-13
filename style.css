@@ -57,6 +57,10 @@ img {
 	opacity:0 !important; 
 }
 
+.notDisplayed {
+	display:none;
+}
+
 #scrollContainer {
 	height:95vh;
 	width:100vw;
