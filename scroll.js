@@ -7,9 +7,6 @@ let prevSectionIndex = 0, currSectionIndex = 0;
 let prevImageIndex = 0, currImageIndex=0;
 let prevScroll=0, currScroll = 0;
 
-// window.addEventListener( 'resize', onWindowResize, false );
-
-
 function navSections ()  {
 	currScroll = mapRange(scrollContainer.scrollTop,0, scrollContainer.scrollHeight, 0, numberOfSections);
 	let direction;
@@ -20,11 +17,12 @@ function navSections ()  {
 	}
 	navImagesWithinSection(sections[currSectionIndex], currScroll, direction);
 	prevSectionIndex = currSectionIndex;
-	prevScroll = currScroll
+	prevScroll = currScroll;
 
 }
 
 function navImagesWithinSection(section, scroll, dir) {
+
 	let images = section.querySelectorAll('img');
 	let captionsWithinSection = section.querySelectorAll('p.caption');
 	let prevSectionImages = sections[prevSectionIndex].querySelectorAll('img');
@@ -38,10 +36,13 @@ function navImagesWithinSection(section, scroll, dir) {
 	} else if (currImageIndex != prevImageIndex && currScroll < prevScroll ) {
 		if(images[currImageIndex]) {
 			removeElement(prevSectionImages[prevImageIndex]);
-		
 		}
 	}
-
+	if(currSectionIndex === 0 && currScroll < prevScroll) {
+		if(prevSectionImages[0]) {
+			removeElement(prevSectionImages[0]);
+		}
+	}
 
 	dispImgCaptions(captionsWithinSection, currImageIndex);
 	prevImageIndex = currImageIndex;
