@@ -27,6 +27,7 @@ function navSections ()  {
 function navImagesWithinSection(section, scroll, dir) {
 	let images = section.querySelectorAll('img');
 	let captionsWithinSection = section.querySelectorAll('p.caption');
+	let prevSectionImages = sections[prevSectionIndex].querySelectorAll('img');
 
 	currImageIndex = Math.trunc(mapRange(scroll, currSectionIndex,  currSectionIndex+1, 0, images.length));
 
@@ -36,8 +37,8 @@ function navImagesWithinSection(section, scroll, dir) {
 		}
 	} else if (currImageIndex != prevImageIndex && currScroll < prevScroll ) {
 		if(images[currImageIndex]) {
-			removeElement(images[prevImageIndex]);
-			console.log('removing');
+			removeElement(prevSectionImages[prevImageIndex]);
+		
 		}
 	}
 
